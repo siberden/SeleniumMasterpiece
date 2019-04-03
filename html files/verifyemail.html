@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <script language="JavaScript" type="text/javascript">
+function isEmailValid(strEmailID,isRequired,isDisplay) {
+    strEmailID = strEmailID.toLowerCase();
+    if (strEmailID == '' && isRequired) {
+    if (isDisplay) alert('Email ID should not be empty');
+    return false;
+    }
+    if (strEmailID == '') return true;
+    var invalidChars = '\/\'\\ ";:?!()[]\{\}^|';
+    for (i=0; i<invalidChars.length; i++) {
+    if (strEmailID.indexOf(invalidChars.charAt(i),0) > -1) {
+       if (isDisplay) alert('Only valid characters are allowed');
+       return false;
+    }
+    }
+    for (i=0; i<strEmailID.length; i++) {
+    if (strEmailID.charCodeAt(i)>127) {
+       if (isDisplay) alert("Invalid Characters found");
+       return false;
+    }
+    }
+
+    var atPos = strEmailID.indexOf('@',0);
+    if (atPos == -1) {
+    if (isDisplay) alert('@ is not found');
+    return false;
+    }
+    if (atPos == 0) {
+    if (isDisplay) alert(' @ is not allowed as first character');
+    return false;
+    }
+    if (strEmailID.indexOf('@', atPos + 1) > - 1) {
+    if (isDisplay) alert('Only One @ symbol is allowed');
+    return false;
+    }
+    if (strEmailID.indexOf('.', atPos) == -1) {
+    if (isDisplay) alert('email ID must contain a period in the domain name');
+    return false;
+    }
+    if (strEmailID.indexOf('@.',0) != -1) {
+    if (isDisplay) alert('Period should not immediately follow @ in an email ID');
+    return false;
+    }
+    if (strEmailID.indexOf('.@',0) != -1){
+    if (isDisplay) alert(' After @ period should not follow in an email ID');
+    return false;
+    }
+    if (strEmailID.indexOf('..',0) != -1) {
+    if (isDisplay) alert('Period should not be repeated');
+    return false;
+    }
+    var suffix = strEmailID.substring(strEmailID.lastIndexOf('.')+1);
+    if (suffix.length != 2 && suffix != 'com' && suffix != 'net' && suffix != 'org' && suffix != 'edu' && suffix != 'int' && suffix != 'mil' && suffix != 'gov' & suffix != 'arpa' && suffix != 'biz' && suffix != 'aero' && suffix != 'name' && suffix != 'coop' && suffix != 'info' && suffix != 'pro' && suffix != 'museum') {
+    if (isDisplay) alert('Does not contain a valid domain id');
+    return false;
+    }
+    return true;
+    }
+
+    function isValid()
+    {
+    document.getElementById("idTdNameDisp").style.display='block';
+    document.getElementById("idNameDisp").style.display='block';
+    document.getElementById("idTdEmailDisp").style.display='block';
+    document.getElementById("idEmailDisp").style.display='block'; 
+   	document.getElementById("txtName").disabled = true;
+   	document.getElementById("txtEmail").disabled = true;
+       
+    if (document.getElementById("txtName").value == "") {
+     alert("Name should not be empty");
+     document.getElementById("idNameDisp").innerHTML='Invalid';
+    }
+    else
+    {
+     document.getElementById("idNameDisp").innerHTML='Valid';
+    }
+     
+    if (isEmailValid(document.getElementById("txtEmail").value,true,true)) 
+    {
+    //alert(document.getElementById("idEmailDisp").innerHTML);
+    document.getElementById("idEmailDisp").innerHTML='Valid';
+    } 
+    else 
+    {
+    document.getElementById("idEmailDisp").innerHTML='Invalid';
+    //alert(document.getElementById("idEmailDisp").innerHTML);
+    };
+
+    return true;
+    }
+    
+    function makeEdit() {
+    	document.getElementById("txtName").value = "";
+    	document.getElementById("txtEmail").value = "";
+    	document.getElementById("txtName").disabled = false;
+    	document.getElementById("txtEmail").disabled = false;
+    }
+
+    </script>
+    <style type="text/css">
+		.clsBlue {color: blue}
+    .clsRed {color: red}
+    .clsBorder {border-width:1; border-style: double; border-color:green}
+    .clsButton {color=blue;}
+    </style>
+    <title>User Input Form</title>
+  </head>
+  <body>
+
+    <form name="frm" method="get" action="UserInputForm.html" id="frm">
+      <table border='0' cellpadding="0" cellspacing="0" class="clsBorder"
+      width="350">
+        <tr><td colspan='3'>&nbsp;</td></tr>
+        <tr>
+          <td width="25%" align="right">
+            <span class="clsBlue">Name:</span><span class="clsRed">*</span>&nbsp;
+          </td>
+          <td width="50%">
+
+            <input type='text' id='txtName' name='txtName' value='' disabled='true'>
+
+          </td>
+          <td width="25%"  id="idTdNameDisp" style="display:none">
+            <span id="idNameDisp" class="clsRed" style="display:none"></span>
+          </td>
+        </tr>
+        <tr>
+          <td  align="right">
+
+            <span class="clsBlue">Email:</span><span class="clsRed">*</span>&nbsp;
+
+          </td>
+          <td>
+            <input type='text' id='txtEmail' name='txtEmail' value=''  disabled='true'>
+          </td>
+          <td id="idTdEmailDisp" style="display:none">
+            <span id="idEmailDisp" class="clsRed" style="display:none"></span>
+
+          </td>
+        </tr>
+        <tr height="12"><td colspan="3"></td></tr>
+        <tr id="idSubmit">
+          <td colspan="2" align="center">
+          	<input type='button' value="Update" class="clsButton" onclick="makeEdit();">
+            <input type='button' value="Submit" class="clsButton" onclick="isValid();">
+          </td>
+        </tr>
+
+        <tr><td colspan='3'>&nbsp;</td></tr>
+      </table>
+    </form>
+  </body>
+</html>

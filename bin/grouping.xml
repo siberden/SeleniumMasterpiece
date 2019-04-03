@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+ <suite name="Group Test Suite" verbose="1"> 
+     <test name="Group Test" > 
+         <groups>
+              <run>
+                  <include name="check-mail" /> 
+               </run> 
+          </groups> 
+          <classes> 
+                <class name="testNG.Grouping" /> 
+           </classes>
+     </test> 
+</suite> 

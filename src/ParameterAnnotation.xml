@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="suite1" verbose="1">
+<test name="test1">
+<parameter name="num" value="1" />
+<classes>
+<class name="testNG.TestNGAnnotationsDemo" />
+
+<!-- class name should be with package name and no need to any extension like .class or .java -->
+</classes>
+
+</test>
+
+</suite>

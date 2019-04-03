@@ -1,0 +1,17 @@
+<html><head><title> Age Problem </title></head>
+<body>
+<form name="frmAge" action="AgeProb.html">
+Enter Your Age: <input name="txtAge" id="idAge" type="text" value="" maxlength="3">
+<input name"subGo" id="idSubGo" type="Submit" value="Submit" 
+onclick='JavaScript:iAge=frmAge.txtAge.value;
+switch(true) {
+	case (iAge <= 1): alert("Infant"); break;
+	case (iAge > 1 && iAge <=10): alert("Kid"); break;
+	case (iAge > 10 && iAge <=19): alert("Teen"); break;
+	case (iAge >= 20 && iAge <=50): alert("Adult"); break;
+	case (iAge >= 51 && iAge <=70): alert("Senior"); break;
+	case (iAge >= 71 && iAge <=100): alert("Grand Senior"); break;
+	case (iAge >= 101): alert("I hate this life"); break;
+	default: alert("Something wrong, enter your right age!");
+}'>
+</form></body></html>

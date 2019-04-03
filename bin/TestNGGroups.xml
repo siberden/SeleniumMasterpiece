@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="groupsdemo" verbose="1">
+<test name="groups">
+
+<groups>
+<run>
+<include name="car" />
+<exclude name="bike" />
+</run>
+</groups>
+<classes>
+
+<class name="testNG.TestNGGroupsDemo" />
+</classes>
+</test>
+</suite>
